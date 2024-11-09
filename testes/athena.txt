@@ -1,0 +1,10 @@
+SELECT 
+    REGEXP_EXTRACT(nome_arquivo, '^[A-Za-z0-9]+') AS tipo_arquivo, 
+    nome_status AS situacao, 
+    COUNT(*) AS total
+FROM 
+    portabilidades
+GROUP BY 
+    REGEXP_EXTRACT(nome_arquivo, '^[A-Za-z0-9]+'), nome_status
+ORDER BY 
+    tipo_arquivo, situacao;
